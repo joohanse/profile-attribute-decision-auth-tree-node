@@ -14,12 +14,12 @@
  * Copyright 2017 ForgeRock AS.
  */
 // simon.moffatt@forgerock.com - retrieves profile attrbute and checks for specified value
+// 2018 12 17: joon.hansen@forgerock.com - 6.5.0 housekeeping removed unused imports and replaced returned list
 
 package org.forgerock.openam.auth.nodes;
 
 import com.google.inject.assistedinject.Assisted;
 import com.sun.identity.shared.debug.Debug;
-import org.forgerock.guava.common.collect.ImmutableList;
 import org.forgerock.json.JsonValue;
 import org.forgerock.openam.annotations.sm.Attribute;
 import org.forgerock.openam.auth.node.api.*;
@@ -39,7 +39,6 @@ import javax.inject.Inject;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.inject.Inject;
-import org.forgerock.guava.common.collect.ImmutableList;
 import org.forgerock.json.JsonValue;
 import org.forgerock.util.i18n.PreferredLocales;
 
@@ -154,10 +153,15 @@ public class ProfileAttributeDecisionNode implements Node {
         @Override
         public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
             ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, OutcomeProvider.class.getClassLoader());
-            return ImmutableList.of(
+            /* return ImmutableList.of(
                     new Outcome( "Empty", bundle.getString("Empty")),
                     new Outcome("Match", bundle.getString("Match")),
                     new Outcome("noMatch", bundle.getString("noMatch")));
+            */
+            return Arrays.asList(
+                    new Outcome[]{ new Outcome( "Empty", bundle.getString("Empty")),
+                            new Outcome("Match", bundle.getString("Match")),
+                            new Outcome("noMatch", bundle.getString("noMatch"))});
         }
     }
 }

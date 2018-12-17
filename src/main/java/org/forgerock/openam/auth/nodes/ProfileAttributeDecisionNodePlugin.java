@@ -18,11 +18,11 @@
  *
  * Needed to register the node
  */
+// 2018 12 17: joon.hansen@forgerock.com - 6.5.0 housekeeping
 
 package org.forgerock.openam.auth.nodes;
 
 import static java.util.Arrays.asList;
-import static org.forgerock.openam.core.realms.Realm.root;
 
 import javax.inject.Inject;
 
