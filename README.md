@@ -43,9 +43,11 @@ ForgeRock shall not be liable for any direct, indirect or consequential damages 
 [forgerock_platform]: https://www.forgerock.com/platform/
 ## Tested
 This is tested with:
+```
 java version "1.8.0_192"
 Java(TM) SE Runtime Environment (build 1.8.0_192-b12)
 Java HotSpot(TM) 64-Bit Server VM (build 25.192-b12, mixed mode)
 Apache Tomcat 8.5.34
 Mac OSX 10.14.2
 ForgeRock Access Management 6.5.0 Build f8ac1261d9 (2018-November-28 15:19)
+```
