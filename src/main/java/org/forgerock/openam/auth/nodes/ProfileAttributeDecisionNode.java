@@ -42,12 +42,6 @@ import javax.inject.Inject;
 import org.forgerock.json.JsonValue;
 import org.forgerock.util.i18n.PreferredLocales;
 
-
-
-
-
-
-
 @Node.Metadata(outcomeProvider = ProfileAttributeDecisionNode.OutcomeProvider.class,
         configClass = ProfileAttributeDecisionNode.Config.class)
 public class ProfileAttributeDecisionNode implements Node {
@@ -153,15 +147,16 @@ public class ProfileAttributeDecisionNode implements Node {
         @Override
         public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
             ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, OutcomeProvider.class.getClassLoader());
-            /* return ImmutableList.of(
+             /*return ImmutableList.of(
                     new Outcome( "Empty", bundle.getString("Empty")),
                     new Outcome("Match", bundle.getString("Match")),
                     new Outcome("noMatch", bundle.getString("noMatch")));
             */
             return Arrays.asList(
-                    new Outcome[]{ new Outcome( "Empty", bundle.getString("Empty")),
-                            new Outcome("Match", bundle.getString("Match")),
-                            new Outcome("noMatch", bundle.getString("noMatch"))});
+                new Outcome[]{ new Outcome("Empty", bundle.getString("Empty")),
+                               new Outcome("Match", bundle.getString("Match")),
+                               new Outcome("noMatch", bundle.getString("noMatch"))}
+            );
         }
     }
 }
