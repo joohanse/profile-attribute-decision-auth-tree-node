@@ -18,29 +18,24 @@
 
 package org.forgerock.openam.auth.nodes;
 
-import com.google.inject.assistedinject.Assisted;
+import static org.forgerock.openam.auth.node.api.SharedStateConstants.REALM;
+import static org.forgerock.openam.auth.node.api.SharedStateConstants.USERNAME;
 import com.sun.identity.shared.debug.Debug;
 import org.forgerock.json.JsonValue;
 import org.forgerock.openam.annotations.sm.Attribute;
 import org.forgerock.openam.auth.node.api.*;
-import javax.inject.Inject;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.NameCallback;
-import java.util.*;
-import static org.forgerock.openam.auth.node.api.SharedStateConstants.AUTH_LEVEL;
-import static org.forgerock.openam.auth.node.api.SharedStateConstants.REALM;
-import static org.forgerock.openam.auth.node.api.SharedStateConstants.USERNAME;
-import static org.forgerock.openam.auth.node.api.Action.send;
 import org.forgerock.openam.core.CoreWrapper;
+import org.forgerock.util.i18n.PreferredLocales;
+import javax.inject.Inject;
+import java.util.*;
 import com.iplanet.sso.SSOException;
 import com.sun.identity.idm.*;
-import org.forgerock.openam.utils.CollectionUtils;
-import javax.inject.Inject;
-import java.util.List;
-import java.util.ResourceBundle;
-import javax.inject.Inject;
-import org.forgerock.json.JsonValue;
-import org.forgerock.util.i18n.PreferredLocales;
+//import java.util.List;
+//import java.util.ResourceBundle;
+import com.google.common.collect.ImmutableList;
+import com.google.inject.assistedinject.Assisted;
+
+
 
 @Node.Metadata(outcomeProvider = ProfileAttributeDecisionNode.OutcomeProvider.class,
         configClass = ProfileAttributeDecisionNode.Config.class)
@@ -147,16 +142,16 @@ public class ProfileAttributeDecisionNode implements Node {
         @Override
         public List<Outcome> getOutcomes(PreferredLocales locales, JsonValue nodeAttributes) {
             ResourceBundle bundle = locales.getBundleInPreferredLocale(BUNDLE, OutcomeProvider.class.getClassLoader());
-             /*return ImmutableList.of(
-                    new Outcome( "Empty", bundle.getString("Empty")),
-                    new Outcome("Match", bundle.getString("Match")),
+            return ImmutableList.of(
+                    new Outcome("Empty",   bundle.getString("Empty"  )),
+                    new Outcome("Match",   bundle.getString("Match"  )),
                     new Outcome("noMatch", bundle.getString("noMatch")));
-            */
-            return Arrays.asList(
+
+            /*return Arrays.asList(
                 new Outcome[]{ new Outcome("Empty", bundle.getString("Empty")),
                                new Outcome("Match", bundle.getString("Match")),
                                new Outcome("noMatch", bundle.getString("noMatch"))}
-            );
+            );*/
         }
     }
 }
